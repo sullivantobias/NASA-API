@@ -1,0 +1,16 @@
+<template>
+    <div class="container">
+        <div class="row">
+            <h1>Home page</h1>
+        </div>
+    </div>
+</template>
+
+<script>
+
+
+  export default {
+    components: {}
+  }
+
+</script>
