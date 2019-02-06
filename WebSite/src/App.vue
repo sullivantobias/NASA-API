@@ -14,4 +14,13 @@
 </script>
 <style lang="scss">
     @import "./helper/helper";
+
+    .container-fluid {
+        background-color: $c2;
+
+        .component {
+            margin-bottom: 30px;
+        }
+    }
+
 </style>

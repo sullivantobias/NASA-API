@@ -1,0 +1,20 @@
+<div class="row component apod">
+    <div class="col-12">
+        <h1 class="title">{{ title }}</h1>
+        <figure class="figure section ">
+            <img :src="urlImage" class="img-thumbnail section image"/>
+            <div class="row">
+                <figcaption class="figure-caption text-left col-6">
+                    {{ date }}
+                </figcaption>
+                <figcaption class="figure-caption text-right col-6">
+                    {{ copyright }}
+                </figcaption>
+            </div>
+        </figure>
+        <h3 class="section explanation">
+            Explanation
+        </h3>
+        <p class="section description">{{ description }}</p>
+    </div>
+</div>

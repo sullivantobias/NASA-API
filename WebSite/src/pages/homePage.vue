@@ -1,16 +1,15 @@
 <template>
     <div class="container">
-        <div class="row">
-            <h1>Home page</h1>
-        </div>
+        <Apod />
     </div>
 </template>
 
 <script>
 
+import Apod from '../components/APOD/APOD.vue';
 
   export default {
-    components: {}
+    components: {Apod}
   }
 
 </script>
