@@ -1,0 +1,5 @@
+/**
+ * NAV component
+ */
+
+export default {};

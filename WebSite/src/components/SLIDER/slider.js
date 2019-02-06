@@ -1,0 +1,9 @@
+/**
+ * APOD component
+ */
+
+
+export default {
+};
+
+
