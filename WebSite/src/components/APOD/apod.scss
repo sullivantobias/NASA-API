@@ -1,6 +1,6 @@
 @import '../../helper/helper';
 
-.apod {
+.vApod {
   .title {
     margin: 0;
   }
@@ -9,9 +9,9 @@
     margin-bottom: 30px;
 
     &.image {
-      -webkit-box-shadow: -11px 0px 26px 5px rgba(0, 0, 0, 0.58);
-      -moz-box-shadow: -11px 0px 26px 5px rgba(0, 0, 0, 0.58);
-      box-shadow: -11px 0px 26px 5px rgba(0, 0, 0, 0.58);
+      -webkit-box-shadow: 0 0 26px 5px $c1;
+      -moz-box-shadow: 0 0 26px 5px $c1;
+      box-shadow: 0 0 26px 5px $c1;
     }
   }
 }

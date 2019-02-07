@@ -1,45 +1,47 @@
 @import '../../helper/helper';
 
-.navbar {
-  background-color: $c2-o1;
-  transition: background-color 0.6s;
+.vNav {
+  .navbar {
+    background-color: $c2-o1;
+    transition: background-color 0.6s;
 
-  &-brand {
-    margin-left: 30px;
-  }
-
-  li {
-    .nav-link {
-      transition: color 0.6s;
-      color: $c3 !important;
+    &-brand {
+      margin-left: 30px;
     }
-
-    &.active {
-      .nav-link {
-        color: $c1 !important;
-      }
-    }
-  }
-
-  &.scrolled {
-    background-color: $c1;
 
     li {
       .nav-link {
-        color: $c2 !important;
+        transition: color 0.6s;
+        color: $c3 !important;
       }
 
       &.active {
         .nav-link {
-          color: $c3 !important;
+          color: $c1 !important;
         }
       }
     }
-  }
 
-  @include breakpoint(all-tablet-mobile) {
-    #navbarResponsive {
-      margin-left: 30px;
+    &.scrolled {
+      background-color: $c1;
+
+      li {
+        .nav-link {
+          color: $c2 !important;
+        }
+
+        &.active {
+          .nav-link {
+            color: $c3 !important;
+          }
+        }
+      }
+    }
+
+    @include breakpoint(all-tablet-mobile) {
+      #navbarResponsive {
+        margin-left: 30px;
+      }
     }
   }
 }
