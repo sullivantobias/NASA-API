@@ -20,7 +20,6 @@
 
     .container-fluid {
         background-color: $c2;
-        margin-top: 70px;
 
         .component {
             margin-bottom: 30px;
