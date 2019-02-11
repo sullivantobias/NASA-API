@@ -1,0 +1,6 @@
+/**
+ * FOOTER component
+ */
+
+export default {
+};

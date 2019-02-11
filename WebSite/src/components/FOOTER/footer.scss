@@ -1,0 +1,21 @@
+@import '../../helper/helper';
+
+.vFooter {
+  footer {
+    background-color: $c1;
+    height: 80px;
+
+    .link {
+      background-color: $c2-o1;
+      border: none;
+      height: 80px;
+      list-style: none;
+      transition: background-color .8s;
+
+      &:hover {
+        background-color: $c3;
+        cursor: pointer;
+      }
+    }
+  }
+}

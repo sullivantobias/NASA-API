@@ -1,16 +1,18 @@
 <template>
     <div id="app">
-        <Nav />
+        <Nav/>
         <router-view name="home"/>
+        <Footer/>
     </div>
 </template>
 
 <script>
   import Nav from './components/NAV/NAV.vue';
+  import Footer from './components/FOOTER/FOOTER.vue';
 
   export default {
     name: "app",
-    components: {Nav},
+    components: {Nav, Footer},
   };
 
 
