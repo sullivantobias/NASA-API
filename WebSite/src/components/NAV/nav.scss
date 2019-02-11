@@ -1,6 +1,14 @@
 @import '../../helper/helper';
 
 .vNav {
+  #magic-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 4px;
+  }
+
   .navbar {
     background-color: $c2-o1;
     transition: background-color 0.6s;
@@ -36,12 +44,20 @@
           }
         }
       }
+
+      #magic-line {
+        background: $c3;
+      }
     }
 
     @include breakpoint(all-tablet-mobile) {
       #navbarResponsive {
         margin-left: 30px;
       }
+    }
+
+    #magic-line {
+      background: $c1;
     }
   }
 }
