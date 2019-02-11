@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <Slider  />
         <Separator titleOfSection="Photo of the day" />
         <Apod />
