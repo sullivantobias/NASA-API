@@ -3,9 +3,9 @@
         <div class="copyright col-lg-4 col-sm-12">
             <h4>&copy; Sullivan Tobias</h4>
         </div>
-        <div class="col-lg-8">
-            <button class="link col-2">
-                NASA
+        <div class="col-lg-8 links">
+            <button v-for="link in links" :class="link.classLink">
+                {{ link.title }}
             </button>
         </div>
     </footer>

@@ -5,17 +5,37 @@
     background-color: $c1;
     height: 80px;
 
-    .link {
-      background-color: $c2-o1;
-      border: none;
-      height: 80px;
-      list-style: none;
-      transition: background-color .8s;
-
-      &:hover {
-        background-color: $c3;
-        cursor: pointer;
+    .copyright {
+      h4 {
+        height: 80px;
+        margin-bottom: 0;
       }
     }
+
+    .links {
+      padding: 0;
+
+      .link {
+        background-color: $c2-o1;
+        border: none;
+        height: 80px;
+        list-style: none;
+        transition: background-color .8s;
+
+        &.contact, &.api {
+          background-color: $c4;
+        }
+
+        &.website {
+          background-color: $c4-lighter;
+        }
+
+        &:hover {
+          background-color: $c3;
+          cursor: pointer;
+        }
+      }
+    }
+
   }
 }
