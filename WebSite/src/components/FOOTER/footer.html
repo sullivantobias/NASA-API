@@ -1,11 +1,11 @@
 <div class="vFooter">
     <footer class="row">
         <div class="copyright col-lg-4 col-sm-12">
-            <h4>&copy; Sullivan Tobias</h4>
+            <h4 class="text-center">&copy; Sullivan Tobias</h4>
         </div>
         <div class="col-lg-8 links">
-            <button v-for="link in links" :class="link.classLink">
-                {{ link.title }}
+            <button @click="redirect(link.href)"  v-for="link in links" :class="link.classLink">
+                <a>{{ link.title }}</a>
             </button>
         </div>
     </footer>

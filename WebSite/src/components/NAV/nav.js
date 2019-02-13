@@ -4,9 +4,28 @@
 import $ from 'jquery';
 
 export default {
+  data() {
+    return {
+      navLinks: {
+        home: {
+          title: 'Home',
+          ref: '/',
+          active: '',
+        },
+        asteroid: {
+          title: 'Asteroids',
+          ref: 'asteroid',
+          active: '',
+        }
+      }
+    }
+  },
   mounted() {
+
     const navBar = document.querySelector('nav');
     const sticky = navBar.offsetTop;
+
+    this.activeTab();
 
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > sticky) {
@@ -47,4 +66,15 @@ export default {
       }
     );
   },
+  methods: {
+    activeTab() {
+      let fullPath = '/';
+      Object.keys(this.navLinks).forEach((key) => {
+        if (this.$route.path !== '/') {
+          fullPath = this.$route.path.replace('/', '');
+        }
+        if (this.navLinks[key].ref === fullPath) this.navLinks[key].active = 'currentActiveTab';
+      });
+    }
+  }
 };

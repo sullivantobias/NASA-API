@@ -25,7 +25,7 @@
         color: $c3 !important;
       }
 
-      &.active {
+      &.currentActiveTab {
         .nav-link {
           color: $c1 !important;
         }
@@ -40,7 +40,7 @@
           color: $c2 !important;
         }
 
-        &.active {
+        &.currentActiveTab {
           .nav-link {
             color: $c3 !important;
           }
