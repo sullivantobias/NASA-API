@@ -9,6 +9,7 @@ import 'bootstrap/dist/js/bootstrap';
 
 import home from './pages/homePage.vue';
 import test from './pages/testPage.vue';
+import moon from './pages/moonPage.vue';
 
 Vue.use(BootstrapVue);
 
@@ -27,6 +28,12 @@ const router = new VueRouter({
       path: '*',
       components: {
         home: home,
+      },
+    },
+    {
+      path: '/moon',
+      components: {
+        moon: moon,
       },
     },
     {

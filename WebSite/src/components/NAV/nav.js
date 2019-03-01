@@ -13,8 +13,8 @@ export default {
           active: '',
         },
         asteroid: {
-          title: 'Asteroids',
-          ref: 'asteroid',
+          title: 'Moon',
+          ref: 'moon',
           active: '',
         }
       }

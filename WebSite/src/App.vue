@@ -1,9 +1,10 @@
 <template>
     <div id="app">
-        <Nav v-if="!$route.name === 'test'" />
+        <Nav />
         <router-view name="home"/>
+        <router-view name="moon"/>
         <router-view name="test"/>
-        <Footer v-if="!$route.name === 'test'" />
+        <Footer />
     </div>
 </template>
 
