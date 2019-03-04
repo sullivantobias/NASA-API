@@ -23,6 +23,11 @@
       @content ;
     }
   }
+  @if $point == full-laptop-992 {
+    @media (min-width: 992px) {
+      @content ;
+    }
+  }
   @if $point == desktop {
     @media (min-width: 1281px) {
       @content ;

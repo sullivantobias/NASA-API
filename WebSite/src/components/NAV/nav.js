@@ -1,7 +1,6 @@
 /**
  * NAV component
  */
-import $ from 'jquery';
 
 export default {
   data() {
@@ -21,7 +20,6 @@ export default {
     }
   },
   mounted() {
-
     const navBar = document.querySelector('nav');
     const sticky = navBar.offsetTop;
 
@@ -32,42 +30,47 @@ export default {
         navBar.classList.remove('scrolled');
       }
     });
-    let $el,
-      leftPos,
-      newWidth,
-      $mainNav = $(".navbar-nav");
 
-    $mainNav.append("<li id='magic-line'></li>");
-    let $magicLine = $("#magic-line");
+    let mainNav = document.querySelector(".navbar-nav");
+    const magicLineElement = document.createElement('li');
+    magicLineElement.id = "magic-line";
 
-    let leftPosition = 0;
+    mainNav.appendChild(magicLineElement);
+    let magicLine = document.querySelector("#magic-line");
+
     let fullPath = this.$route.path.replace('/', '');
-    leftPosition = this.magicLinePosition(fullPath);
+    let leftPosition = this.magicLinePosition(fullPath).left;
+    let width = this.magicLinePosition(fullPath).width;
 
-    $magicLine
-      .width($(".active").width())
-      .css("left", leftPosition)
-      .data("origLeft", $magicLine.position().left)
-      .data("origWidth", $magicLine.width());
+    magicLine.style.width = width + 'px';
+    magicLine.style.left = leftPosition + 'px';
+    let origLeft = magicLine.offsetLeft + 'px';
+    let origWidth = magicLine.offsetWidth + 'px';
 
-    const that = this;
-    $(".navbar-nav li a").hover(
-      function () {
-        $el = $(this);
-        leftPos = $el.position().left;
-        newWidth = $el.parent().width();
-        $magicLine.stop().animate({
-          left: leftPos,
-          width: newWidth
+    const liA = document.querySelectorAll(".navbar-nav li a");
+
+    liA.forEach(
+      (item) => {
+        item.addEventListener('mouseover', () => {
+          let leftPos = item.offsetLeft;
+          let widthItem = item.offsetWidth;
+          magicLine.style.left = leftPos + 'px';
+          magicLine.style.width = widthItem + 'px';
         });
-      },
-      function () {
-        $magicLine.stop().animate({
-          left: $magicLine.data('origLeft'),
-          width: $magicLine.data("origWidth")
-        });
+
+        item.addEventListener('mouseout', () => {
+          magicLine.style.left = origLeft;
+          magicLine.style.width = origWidth
+        })
       }
     );
+    window.addEventListener('resize', () => {
+       leftPosition = this.magicLinePosition(fullPath).left;
+       width = this.magicLinePosition(fullPath).width;
+
+      magicLine.style.left = leftPosition + 'px';
+      magicLine.style.width = width + 'px';
+    });
 
     this.activeTab();
   },
@@ -83,15 +86,18 @@ export default {
     },
     magicLinePosition(fullPath) {
       const links = document.querySelectorAll('.nav-item a');
-      let magicLine = document.querySelector('#magic-line');
-
-      magicLine.style.left = links[0].parentElement.offsetLeft + "px";
+      let positionLine = {
+        left: links[0].parentElement.offsetLeft,
+        width: links[0].parentElement.offsetWidth
+      };
 
       links.forEach((item) => {
         if (fullPath === item.getAttribute('data-ref')) {
-          magicLine.style.left = item.parentElement.offsetLeft + 'px';
+          positionLine.left = item.parentElement.offsetLeft;
+          positionLine.width = item.parentElement.offsetWidth;
         }
-      })
-    }
+      });
+      return positionLine;
+    },
   }
 };

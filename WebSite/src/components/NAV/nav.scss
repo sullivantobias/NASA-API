@@ -1,13 +1,16 @@
 @import '../../helper/helper';
 
 .vNav {
-  @include breakpoint(full-laptop) {
+  @include breakpoint(full-laptop-992) {
     #magic-line {
+      background: $c1;
+      display: block;
       position: absolute;
       bottom: 0;
-      left: 0;
-      width: 100px;
+      width: 0;
       height: 4px;
+
+      transition: width, left .5s;
     }
   }
 
@@ -56,10 +59,6 @@
       #navbarResponsive {
         margin-left: 30px;
       }
-    }
-
-    #magic-line {
-      background: $c1;
     }
   }
 }
