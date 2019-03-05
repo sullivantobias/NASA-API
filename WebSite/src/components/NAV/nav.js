@@ -87,13 +87,13 @@ export default {
     magicLinePosition(fullPath) {
       const links = document.querySelectorAll('.nav-item a');
       let positionLine = {
-        left: links[0].parentElement.offsetLeft,
+        left: links[0].parentElement.offsetLeft - 7,
         width: links[0].parentElement.offsetWidth
       };
 
       links.forEach((item) => {
         if (fullPath === item.getAttribute('data-ref')) {
-          positionLine.left = item.parentElement.offsetLeft;
+          positionLine.left = item.parentElement.offsetLeft - 7;
           positionLine.width = item.parentElement.offsetWidth;
         }
       });
