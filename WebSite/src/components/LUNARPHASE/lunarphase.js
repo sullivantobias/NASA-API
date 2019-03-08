@@ -15,7 +15,15 @@ export default {
       type: Boolean,
       default: true
     },
-    sizeMoon: {
+    sizeMoonLaptop: {
+      type: String,
+      default: "400"
+    },
+    sizeMoonTablet: {
+      type: String,
+      default: "300"
+    },
+    sizeMoonMobile: {
       type: String,
       default: "200"
     },
@@ -48,11 +56,8 @@ export default {
         apiGetters.push(key + "=" + encodeURIComponent(this.lunarConf[key]))
       }
 
-      console.log(apiGetters)
-
       const pro = axios.get('http://www.icalendar37.net/lunar/api/?"' + apiGetters.join("&"));
       pro.then((response) => {
-        console.log(response);
         return response;
       }).then((res) => {
         this.dateLunar.day = res.data.receivedVariables.day;
@@ -79,14 +84,26 @@ export default {
           })
         });
       });
-      document.querySelectorAll('.vLunarPhase  #moonSvg').forEach((item) => {
-        item.innerHTML = this.dateLunar.svg;
-        // Because bug with API called twice or more //
-        const dataSize = item.getAttribute('data-size');
-        item.firstElementChild.setAttribute('height', dataSize);
-        item.firstElementChild.setAttribute('width', dataSize);
+      this.resizeSvg();
+      window.addEventListener('resize', () => {
+        this.resizeSvg();
       });
       return objToFill;
     },
+    resizeSvg() {
+      // Because bug with API called twice or more //
+      document.querySelectorAll('.vLunarPhase  #moonSvg').forEach((item) => {
+        let dataSize = item.getAttribute('data-sizeLaptop');
+        if (window.innerWidth < 1024) {
+          dataSize = item.getAttribute('data-sizeTablet');
+        }
+        if (window.innerWidth < 768) {
+          dataSize = item.getAttribute('data-sizeMobile');
+        }
+        item.innerHTML = this.dateLunar.svg;
+        item.firstElementChild.setAttribute('height', dataSize);
+        item.firstElementChild.setAttribute('width', dataSize);
+      });
+    }
   }
 };

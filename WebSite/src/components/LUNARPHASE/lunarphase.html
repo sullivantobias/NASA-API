@@ -2,7 +2,7 @@
     <div v-if="dayPhase">
         <h1>{{dateLunar.nameDay[dateLunar.dayWeek]}}</h1>
         <h3>{{ dateLunar.day }} {{dateLunar.monthName}} {{dateLunar.year}}</h3>
-        <div :data-size="sizeMoon" id="moonSvg"></div>
+        <div :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile" :data-sizeTablet="sizeMoonTablet" id="moonSvg"></div>
         <p class="phaseName">{{ dateLunar.npWidget }}</p>
     </div>
 </div>
