@@ -3,7 +3,7 @@
  */
 
 export default {
-  props: ['accordions']
+  props: ['accordions'],
 };
 
 

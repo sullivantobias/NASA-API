@@ -94,12 +94,14 @@ export default {
       // Because bug with API called twice or more //
       document.querySelectorAll('.vLunarPhase  #moonSvg').forEach((item) => {
         let dataSize = item.getAttribute('data-sizeLaptop');
+
         if (window.innerWidth < 1024) {
           dataSize = item.getAttribute('data-sizeTablet');
         }
         if (window.innerWidth < 768) {
           dataSize = item.getAttribute('data-sizeMobile');
         }
+
         item.innerHTML = this.dateLunar.svg;
         item.firstElementChild.setAttribute('height', dataSize);
         item.firstElementChild.setAttribute('width', dataSize);

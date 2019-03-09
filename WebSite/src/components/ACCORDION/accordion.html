@@ -6,9 +6,7 @@
             </b-card-header>
             <b-collapse :id="accordion.id" visible accordion="my-accordion" role="tabpanel">
                 <b-card-body class="informations">
-                    <p class="card-text">
-                       {{ accordion.informations }}
-                    </p>
+                    <slot :name="accordion.id"></slot>
                 </b-card-body>
             </b-collapse>
         </b-card>
