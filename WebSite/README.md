@@ -1,7 +1,7 @@
-# Nasa LIKE
+# Space Project
+> Auhor: Sullivan Tobias
 
-> NASA WEBSITE using vueJS
-
+>Framework: vueJS
 ## Build Setup
 
 ``` bash

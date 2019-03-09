@@ -1,0 +1,11 @@
+@import '../../helper/helper';
+
+.vLunarPhase {
+  h1, h3{
+    color: $c3;
+    margin-bottom: 20px;
+  }
+  p {
+    text-align: center;
+  }
+}

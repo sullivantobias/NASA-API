@@ -8,6 +8,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/js/bootstrap';
 
 import home from './pages/homePage.vue';
+import test from './pages/testPage.vue';
+import moon from './pages/moonPage.vue';
 
 Vue.use(BootstrapVue);
 
@@ -24,7 +26,21 @@ const router = new VueRouter({
     },
     {
       path: '*',
-      component: home,
+      components: {
+        home: home,
+      },
+    },
+    {
+      path: '/moon',
+      components: {
+        moon: moon,
+      },
+    },
+    {
+      path: '/test',
+      components: {
+        test: test,
+      },
     },
   ],
 });

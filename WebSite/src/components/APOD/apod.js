@@ -7,6 +7,7 @@ export default {
     return {
       title: '',
       urlImage: '',
+      urlVideo: '',
       description: '',
       copyright: '',
       date: '',
@@ -20,17 +21,20 @@ export default {
       const axios = require('axios');
 
       axios.get('https://api.nasa.gov/planetary/apod?api_key=mGlyqdllt3l9im7mObCfTnJiI4wsyJJLnTFdT6Gi')
-          .then((response) => {
-            console.log(response);
-            this.title = response.data.title
+        .then((response) => {
+          this.title = response.data.title;
+
+          if (!response.data.url.includes('youtube'))
             this.urlImage = response.data.url;
-            this.description = response.data.explanation;
-            this.copyright = `\u00A9 ${response.data.copyright}`;
-            this.date = response.data.date;
-          })
-          .catch((error) => {
-            console.error(error);
-          })
+          else this.urlVideo = response.data.url;
+
+          this.description = response.data.explanation;
+          if (response.data.copyright) this.copyright = `\u00A9 ${response.data.copyright}`;
+          this.date = response.data.date;
+        })
+        .catch((error) => {
+          console.error(error);
+        })
     }
   }
 };

@@ -1,0 +1,46 @@
+/**
+ ** Breakpoints
+ */
+
+@mixin breakpoint($point) {
+  @if $point == all-tablet-mobile {
+    @media  (max-width: 991px) {
+      @content ;
+    }
+  }
+  @if $point == tablet {
+    @media (min-width: 769px) and (max-width: 1024px) {
+      @content ;
+    }
+  }
+  @if $point == laptop {
+    @media (min-width: 1025px) and (max-width: 1280px) {
+      @content ;
+    }
+  }
+  @if $point == full-laptop {
+    @media (min-width: 1025px) {
+      @content ;
+    }
+  }
+  @if $point == full-laptop-992 {
+    @media (min-width: 992px) {
+      @content ;
+    }
+  }
+  @if $point == desktop {
+    @media (min-width: 1281px) {
+      @content ;
+    }
+  }
+  @if $point == mobile-lsc-tablet-portrait {
+    @media (min-width: 361px) and (max-width: 768px) {
+      @content ;
+    }
+  }
+  @if $point == mobile-sm {
+    @media (max-width: 360px) {
+      @content ;
+    }
+  }
+}
