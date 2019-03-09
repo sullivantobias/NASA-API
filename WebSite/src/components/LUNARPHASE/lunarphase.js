@@ -13,7 +13,7 @@ export default {
     },
     dayPhase: {
       type: Boolean,
-      default: true
+      default: false
     },
     sizeMoonLaptop: {
       type: String,

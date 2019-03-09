@@ -4,7 +4,7 @@
         <Accordion :accordions="accdns">
             <div slot="first">
                 <Separator slot="component" titleOfSection="Test1"></Separator>
-                <LunarPhase></LunarPhase>
+                <LunarPhase dayPhase></LunarPhase>
             </div>
             <div slot="second">
                 <Separator titleOfSection="Test2"></Separator>

@@ -3,7 +3,7 @@
         <Img src="src/assets/imageComponentImages/full-moon.jpg" fluidGrow></Img>
         <Separator titleOfSection="Today's Moon Phase"></Separator>
         <div class="row">
-            <LunarPhase  sizeMoonLaptop="500" sizeMoonTablet="400" sizeMoonMobile="300" nbColumns="12"></LunarPhase>
+            <LunarPhase dayPhase sizeMoonLaptop="500" sizeMoonTablet="400" sizeMoonMobile="300" nbColumns="12"></LunarPhase>
         </div>
         <Separator titleOfSection="Calendar's Moon's Phase"></Separator>
         <div class="row">
