@@ -15,6 +15,18 @@ export default {
       type: Boolean,
       default: false
     },
+    calendarPhases: {
+      type: Boolean,
+      default: false
+    },
+    importantPhases: {
+      type: Boolean,
+      default: false
+    },
+    nextFullMoon: {
+      type: Boolean,
+      default: false
+    },
     sizeMoonLaptop: {
       type: String,
       default: "400"
@@ -30,13 +42,24 @@ export default {
   },
   data() {
     return {
+      calendarPhasesInformations: {
+        nameDay: '',
+        firstDayMonth: '',
+        phase: '',
+        daysMonth: '',
+        nameMonth: '',
+        month: '',
+        year: ''
+      },
       dateLunar: {day: '', monthName: '', year: '', npWidget: '', nameDay: '', dayWeek: '', svg: null},
+      nextFullMoonInfos: {nextFullMoon: ''},
+      importantPhasesInfos: {phase: ''},
       lunarConf: {
         lang: 'en',
         month: new Date().getMonth() + 1,
         year: new Date().getFullYear(),
         day: new Date().getDate(),
-        size: 200,
+        size: 20,
         lightColor: "white",
         shadeColor: "#292929",
         sizeQuarter: 20,
@@ -60,9 +83,9 @@ export default {
       pro.then((response) => {
         return response;
       }).then((res) => {
+        console.log(res);
         this.dateLunar.day = res.data.receivedVariables.day;
-
-        this.onFullfilled([this.dateLunar], res.data);
+        this.onFullfilled([this.dateLunar, this.calendarPhasesInformations, this.nextFullMoonInfos, this.importantPhasesInfos], res.data);
       }).catch((error) => {
         console.log(error)
       });
@@ -92,7 +115,7 @@ export default {
     },
     resizeSvg() {
       // Because bug with API called twice or more //
-      document.querySelectorAll('.vLunarPhase  #moonSvg').forEach((item) => {
+      document.querySelectorAll('.vLunarPhase #moonSvg, #importantPhases').forEach((item) => {
         let dataSize = item.getAttribute('data-sizeLaptop');
 
         if (window.innerWidth < 1024) {
@@ -101,8 +124,6 @@ export default {
         if (window.innerWidth < 768) {
           dataSize = item.getAttribute('data-sizeMobile');
         }
-
-        item.innerHTML = this.dateLunar.svg;
         item.firstElementChild.setAttribute('height', dataSize);
         item.firstElementChild.setAttribute('width', dataSize);
       });

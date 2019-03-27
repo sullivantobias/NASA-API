@@ -12,7 +12,6 @@ import test from './pages/testPage.vue';
 import moon from './pages/moonPage.vue';
 
 Vue.use(BootstrapVue);
-
 Vue.use(VueRouter);
 
 const router = new VueRouter({

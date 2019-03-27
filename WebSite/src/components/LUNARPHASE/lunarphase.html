@@ -2,7 +2,34 @@
     <div v-if="dayPhase">
         <h1>{{dateLunar.nameDay[dateLunar.dayWeek]}}</h1>
         <h3>{{ dateLunar.day }} {{dateLunar.monthName}} {{dateLunar.year}}</h3>
-        <div :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile" :data-sizeTablet="sizeMoonTablet" id="moonSvg"></div>
+        <div :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile" :data-sizeTablet="sizeMoonTablet"
+             id="moonSvg" v-html="dateLunar.svg"></div>
         <p class="phaseName">{{ dateLunar.npWidget }}</p>
+    </div>
+
+    <div v-if="calendarPhases" class="container">
+        <div>{{calendarPhasesInformations.nameMonth[calendarPhasesInformations.month-1]}}
+            {{calendarPhasesInformations.year}}
+        </div>
+        <ul class="row">
+            <li v-for="day in Number(calendarPhasesInformations.daysMonth)">
+                <h3>{{day}}</h3>
+                <div v-html="calendarPhasesInformations.phase[day].svg" id="calendarSvg">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div v-if="importantPhases" class="container">
+        <div v-if="phase.isPhaseLimit" v-for="phase in importantPhasesInfos.phase">
+            <h1>{{phase.phaseName}}</h1>
+            <div id="importantPhases" :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile"
+                 :data-sizeTablet="sizeMoonTablet"
+                 v-html="phase.svg"></div>
+        </div>
+    </div>
+
+    <div v-if="nextFullMoon" class="container">
+        <div v-html="nextFullMoonInfos.nextFullMoon"></div>
     </div>
 </div>

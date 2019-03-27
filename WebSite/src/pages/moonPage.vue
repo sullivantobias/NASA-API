@@ -3,11 +3,18 @@
         <Img src="src/assets/imageComponentImages/full-moon.jpg" fluidGrow></Img>
         <Separator titleOfSection="Today's Moon Phase"></Separator>
         <div class="row">
-            <LunarPhase dayPhase sizeMoonLaptop="500" sizeMoonTablet="400" sizeMoonMobile="300" nbColumns="12"></LunarPhase>
+            <LunarPhase dayPhase sizeMoonLaptop="500" sizeMoonTablet="400" sizeMoonMobile="300"
+                        nbColumns="12"/>
         </div>
-        <Separator titleOfSection="Calendar's Moon's Phase"></Separator>
-        <div class="row">
-        </div>
+        <Accordion :accordions="accordionInformations">
+            <LunarPhase slot="calendar" calendarPhases
+                        nbColumns="12"/>
+            <LunarPhase slot="importantPhases" importantPhases sizeMoonLaptop="200" sizeMoonTablet="150"
+                        sizeMoonMobile="100"
+                        nbColumns="12"/>
+            <LunarPhase slot="nextFullMoon" nextFullMoon
+                        nbColumns="12"/>
+        </Accordion>
     </div>
 </template>
 
@@ -20,5 +27,24 @@
 
   export default {
     components: {Accordion, Img, LunarPhase, Separator},
+    data() {
+      return {
+        accordionInformations: [
+          {
+            title: "Calendar's Moon's Phases",
+            id: 'calendar'
+          },
+          {
+            title: "Important Phases",
+            id: 'importantPhases'
+          },
+          {
+            title: "Next Full Moon",
+            id: 'nextFullMoon'
+          }
+        ]
+      }
+    }
   }
+
 </script>
