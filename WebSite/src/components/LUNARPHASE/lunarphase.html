@@ -8,9 +8,9 @@
     </div>
 
     <div v-if="calendarPhases" class="container">
-        <div>{{calendarPhasesInformations.nameMonth[calendarPhasesInformations.month-1]}}
+        <h1 class="calendarDate">{{calendarPhasesInformations.nameMonth[calendarPhasesInformations.month-1]}}
             {{calendarPhasesInformations.year}}
-        </div>
+        </h1>
         <ul class="row">
             <li v-for="day in Number(calendarPhasesInformations.daysMonth)">
                 <h3>{{day}}</h3>
@@ -20,12 +20,29 @@
         </ul>
     </div>
 
+    <div v-if="distance" class="container">
+        <h1 class="calendarDate">{{calendarPhasesInformations.nameMonth[calendarPhasesInformations.month-1]}}
+            {{calendarPhasesInformations.year}}
+        </h1>
+        <h4>Distance in KM</h4>
+        <ul class="row">
+            <li v-for="day in Number(calendarPhasesInformations.daysMonth)">
+                <h3>{{day}}</h3>
+                <p>
+                    {{Math.trunc(calendarPhasesInformations.phase[day].dis)}}
+                </p>
+            </li>
+        </ul>
+    </div>
     <div v-if="importantPhases" class="container">
-        <div v-if="phase.isPhaseLimit" v-for="phase in importantPhasesInfos.phase">
+        <div class="importantPhases" v-if="phase.isPhaseLimit" v-for="(phase, key) in importantPhasesInfos.phase"
+             :key="key">
             <h1>{{phase.phaseName}}</h1>
+            <h4>{{calendarPhasesInformations.nameDay[phase.dayWeek]}} {{key}}</h4>
             <div id="importantPhases" :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile"
                  :data-sizeTablet="sizeMoonTablet"
                  v-html="phase.svg"></div>
+            <hr/>
         </div>
     </div>
 

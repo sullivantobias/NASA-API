@@ -1,6 +1,6 @@
 <div class="component vAccordion">
     <div role="tablist">
-        <b-card no-body v-for="accordion in accordions">
+        <b-card no-body v-for="(accordion, key) in accordions" :key="key">
             <b-card-header header-tag="header" class="p-1" role="tab">
                 <b-button block href="#" class="accBtn" v-b-toggle="accordion.id">{{ accordion.title }}</b-button>
             </b-card-header>

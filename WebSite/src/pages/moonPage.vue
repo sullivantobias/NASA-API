@@ -12,6 +12,8 @@
             <LunarPhase slot="importantPhases" importantPhases sizeMoonLaptop="200" sizeMoonTablet="150"
                         sizeMoonMobile="100"
                         nbColumns="12"/>
+            <LunarPhase slot="distance" distance
+                        nbColumns="12"/>
             <LunarPhase slot="nextFullMoon" nextFullMoon
                         nbColumns="12"/>
         </Accordion>
@@ -37,6 +39,10 @@
           {
             title: "Important Phases",
             id: 'importantPhases'
+          },
+          {
+            title: "Distance",
+            id: 'distance'
           },
           {
             title: "Next Full Moon",

@@ -15,6 +15,10 @@ export default {
       type: Boolean,
       default: false
     },
+    distance: {
+      type: Boolean,
+      default: false
+    },
     calendarPhases: {
       type: Boolean,
       default: false
