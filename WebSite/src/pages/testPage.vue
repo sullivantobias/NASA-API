@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <h1> TEST HEADER </h1>
-        <LunarPhase></LunarPhase>
+        <SearchImages></SearchImages>
         <footer>
             <h1>TEST FOOTER</h1>
         </footer>
@@ -13,9 +13,10 @@
   import Accordion from '../components/ACCORDION/ACCORDION.vue';
   import LunarPhase from '../components/LUNARPHASE/LUNARPHASE.vue';
   import Separator from '../components/SEPARATOR/SEPARATOR.vue';
+  import SearchImages from '../components/SEARCHIMAGES/SEARCHIMAGES.vue'
 
   export default {
-    components: {Img, Accordion, LunarPhase, Separator},
+    components: {Img, Accordion, LunarPhase, Separator, SearchImages},
     data() {
       return {
         accdns: [

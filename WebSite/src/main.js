@@ -10,6 +10,7 @@ import 'bootstrap/dist/js/bootstrap';
 import home from './pages/homePage.vue';
 import test from './pages/testPage.vue';
 import moon from './pages/moonPage.vue';
+import search from './pages/searchPage.vue';
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
@@ -33,6 +34,12 @@ const router = new VueRouter({
       path: '/moon',
       components: {
         moon: moon,
+      },
+    },
+    {
+      path: '/search',
+      components: {
+        search: search,
       },
     },
     {

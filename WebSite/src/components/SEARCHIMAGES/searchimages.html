@@ -1,0 +1,17 @@
+<div class="vSearchImages">
+    <div class="search input-group col-6 offset-3">
+        <input v-model="query" class="form-control border-secondary py-2" type="search" placeholder="Search images">
+        <div class="input-group-append">
+            <button @click="retrieveImages" class="btn btn-outline-secondary send" type="button">
+                Search
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 text-center" v-for="image in images">
+            <img :src="image" class="images img-fluid rounded">
+            <div class="caption">
+            </div>
+        </div>
+    </div>
+</div>
