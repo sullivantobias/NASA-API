@@ -1,10 +1,11 @@
-<div :class="'vLunarPhase component text-center dayPhase col-' + nbColumns +' offset-'+ offset">
-    <div v-if="dayPhase">
-        <h1>{{dateLunar.nameDay[dateLunar.dayWeek]}}</h1>
-        <h3>{{ dateLunar.day }} {{dateLunar.monthName}} {{dateLunar.year}}</h3>
-        <div :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile" :data-sizeTablet="sizeMoonTablet"
+<div :class="['vLunarPhase text-center dayPhase col-' + nbColumns +' offset-'+ offset+ ' '] + [component ? 'component' : '']">
+    <div v-if="dayPhase.render">
+        <h1 v-if="dayPhase.date">{{dateLunar.nameDay[dateLunar.dayWeek]}}</h1>
+        <h3 v-if="dayPhase.fullDate">{{ dateLunar.day }} {{dateLunar.monthName}} {{dateLunar.year}}</h3>
+        <div v-if="dayPhase.render" :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile"
+             :data-sizeTablet="sizeMoonTablet"
              id="moonSvg" v-html="dateLunar.svg"></div>
-        <p class="phaseName">{{ dateLunar.npWidget }}</p>
+        <p v-if="dayPhase.widget" class="phaseName">{{ dateLunar.npWidget }}</p>
     </div>
 
     <div v-if="calendarPhases" class="container">

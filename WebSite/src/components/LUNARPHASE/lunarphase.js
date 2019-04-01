@@ -7,13 +7,33 @@ export default {
       type: String,
       default: "12"
     },
+    component: {
+      type: Boolean,
+      default: false
+    },
     offset: {
       type: Number,
       default: 0
     },
     dayPhase: {
-      type: Boolean,
-      default: false
+      type: Object,
+      default: () => ({}),
+      render: {
+        type: Boolean,
+        default: false
+      },
+      day: {
+        type: Boolean,
+        default: false
+      },
+      fullDate: {
+        type: Boolean,
+        default: false
+      },
+      widget: {
+        type: Boolean,
+        default: false
+      },
     },
     distance: {
       type: Boolean,
@@ -87,9 +107,12 @@ export default {
       pro.then((response) => {
         return response;
       }).then((res) => {
-        console.log(res);
         this.dateLunar.day = res.data.receivedVariables.day;
         this.onFullfilled([this.dateLunar, this.calendarPhasesInformations, this.nextFullMoonInfos, this.importantPhasesInfos], res.data);
+        this.resizeSvg();
+        window.addEventListener('resize', () => {
+          this.resizeSvg();
+        });
       }).catch((error) => {
         console.log(error)
       });
@@ -111,10 +134,6 @@ export default {
           })
         });
       });
-      this.resizeSvg();
-      window.addEventListener('resize', () => {
-        this.resizeSvg();
-      });
       return objToFill;
     },
     resizeSvg() {
@@ -128,8 +147,11 @@ export default {
         if (window.innerWidth < 768) {
           dataSize = item.getAttribute('data-sizeMobile');
         }
-        item.firstElementChild.setAttribute('height', dataSize);
-        item.firstElementChild.setAttribute('width', dataSize);
+
+        setTimeout(() => {
+          item.firstElementChild.setAttribute('height', dataSize);
+          item.firstElementChild.setAttribute('width', dataSize);
+        })
       });
     }
   }

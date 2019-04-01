@@ -3,7 +3,8 @@
         <Img src="src/assets/imageComponentImages/full-moon.jpg" fluidGrow></Img>
         <Separator titleOfSection="Today's Moon Phase"></Separator>
         <div class="row">
-            <LunarPhase dayPhase sizeMoonLaptop="500" sizeMoonTablet="400" sizeMoonMobile="300"
+            <LunarPhase component :dayPhase="{day: true, fullDate: true, widget: true, render: true}" sizeMoonLaptop="500" sizeMoonTablet="400"
+                        sizeMoonMobile="300"
                         nbColumns="12"/>
         </div>
         <Accordion :accordions="accordionInformations">
