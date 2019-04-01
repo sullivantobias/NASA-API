@@ -2,7 +2,10 @@
  * NAV component
  */
 
+import LunarPhase from '../LUNARPHASE/LUNARPHASE.vue'
+
 export default {
+  components: {LunarPhase},
   data() {
     return {
       navLinks: {
@@ -16,7 +19,7 @@ export default {
           ref: 'moon',
           active: '',
         }
-      }
+      },
     }
   },
   mounted() {
@@ -65,8 +68,8 @@ export default {
       }
     );
     window.addEventListener('resize', () => {
-       leftPosition = this.magicLinePosition(fullPath).left;
-       width = this.magicLinePosition(fullPath).width;
+      leftPosition = this.magicLinePosition(fullPath).left;
+      width = this.magicLinePosition(fullPath).width;
 
       magicLine.style.left = leftPosition + 'px';
       magicLine.style.width = width + 'px';

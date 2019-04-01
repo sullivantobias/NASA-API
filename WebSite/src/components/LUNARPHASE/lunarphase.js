@@ -7,11 +7,47 @@ export default {
       type: String,
       default: "12"
     },
+    component: {
+      type: Boolean,
+      default: false
+    },
     offset: {
       type: Number,
       default: 0
     },
     dayPhase: {
+      type: Object,
+      default: () => ({}),
+      render: {
+        type: Boolean,
+        default: false
+      },
+      day: {
+        type: Boolean,
+        default: false
+      },
+      fullDate: {
+        type: Boolean,
+        default: false
+      },
+      widget: {
+        type: Boolean,
+        default: false
+      },
+    },
+    distance: {
+      type: Boolean,
+      default: false
+    },
+    calendarPhases: {
+      type: Boolean,
+      default: false
+    },
+    importantPhases: {
+      type: Boolean,
+      default: false
+    },
+    nextFullMoon: {
       type: Boolean,
       default: false
     },
@@ -30,13 +66,24 @@ export default {
   },
   data() {
     return {
+      calendarPhasesInformations: {
+        nameDay: '',
+        firstDayMonth: '',
+        phase: '',
+        daysMonth: '',
+        nameMonth: '',
+        month: '',
+        year: ''
+      },
       dateLunar: {day: '', monthName: '', year: '', npWidget: '', nameDay: '', dayWeek: '', svg: null},
+      nextFullMoonInfos: {nextFullMoon: ''},
+      importantPhasesInfos: {phase: ''},
       lunarConf: {
         lang: 'en',
         month: new Date().getMonth() + 1,
         year: new Date().getFullYear(),
         day: new Date().getDate(),
-        size: 200,
+        size: 20,
         lightColor: "white",
         shadeColor: "#292929",
         sizeQuarter: 20,
@@ -61,8 +108,11 @@ export default {
         return response;
       }).then((res) => {
         this.dateLunar.day = res.data.receivedVariables.day;
-
-        this.onFullfilled([this.dateLunar], res.data);
+        this.onFullfilled([this.dateLunar, this.calendarPhasesInformations, this.nextFullMoonInfos, this.importantPhasesInfos], res.data);
+        this.resizeSvg();
+        window.addEventListener('resize', () => {
+          this.resizeSvg();
+        });
       }).catch((error) => {
         console.log(error)
       });
@@ -84,15 +134,11 @@ export default {
           })
         });
       });
-      this.resizeSvg();
-      window.addEventListener('resize', () => {
-        this.resizeSvg();
-      });
       return objToFill;
     },
     resizeSvg() {
       // Because bug with API called twice or more //
-      document.querySelectorAll('.vLunarPhase  #moonSvg').forEach((item) => {
+      document.querySelectorAll('.vLunarPhase #moonSvg, #importantPhases').forEach((item) => {
         let dataSize = item.getAttribute('data-sizeLaptop');
 
         if (window.innerWidth < 1024) {
@@ -102,9 +148,10 @@ export default {
           dataSize = item.getAttribute('data-sizeMobile');
         }
 
-        item.innerHTML = this.dateLunar.svg;
-        item.firstElementChild.setAttribute('height', dataSize);
-        item.firstElementChild.setAttribute('width', dataSize);
+        setTimeout(() => {
+          item.firstElementChild.setAttribute('height', dataSize);
+          item.firstElementChild.setAttribute('width', dataSize);
+        })
       });
     }
   }

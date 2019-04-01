@@ -1,8 +1,53 @@
-<div :class="'vLunarPhase component text-center dayPhase col-' + nbColumns +' offset-'+ offset">
-    <div v-if="dayPhase">
-        <h1>{{dateLunar.nameDay[dateLunar.dayWeek]}}</h1>
-        <h3>{{ dateLunar.day }} {{dateLunar.monthName}} {{dateLunar.year}}</h3>
-        <div :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile" :data-sizeTablet="sizeMoonTablet" id="moonSvg"></div>
-        <p class="phaseName">{{ dateLunar.npWidget }}</p>
+<div :class="['vLunarPhase text-center dayPhase col-' + nbColumns +' offset-'+ offset+ ' '] + [component ? 'component' : '']">
+    <div v-if="dayPhase.render">
+        <h1 v-if="dayPhase.date">{{dateLunar.nameDay[dateLunar.dayWeek]}}</h1>
+        <h3 v-if="dayPhase.fullDate">{{ dateLunar.day }} {{dateLunar.monthName}} {{dateLunar.year}}</h3>
+        <div v-if="dayPhase.render" :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile"
+             :data-sizeTablet="sizeMoonTablet"
+             id="moonSvg" v-html="dateLunar.svg"></div>
+        <p v-if="dayPhase.widget" class="phaseName">{{ dateLunar.npWidget }}</p>
+    </div>
+
+    <div v-if="calendarPhases" class="container">
+        <h1 class="calendarDate">{{calendarPhasesInformations.nameMonth[calendarPhasesInformations.month-1]}}
+            {{calendarPhasesInformations.year}}
+        </h1>
+        <ul class="row">
+            <li v-for="day in Number(calendarPhasesInformations.daysMonth)">
+                <h3>{{day}}</h3>
+                <div v-html="calendarPhasesInformations.phase[day].svg" id="calendarSvg">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div v-if="distance" class="container">
+        <h1 class="calendarDate">{{calendarPhasesInformations.nameMonth[calendarPhasesInformations.month-1]}}
+            {{calendarPhasesInformations.year}}
+        </h1>
+        <h4>Distance in KM</h4>
+        <ul class="row">
+            <li v-for="day in Number(calendarPhasesInformations.daysMonth)">
+                <h3>{{day}}</h3>
+                <p>
+                    {{Math.trunc(calendarPhasesInformations.phase[day].dis)}}
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div v-if="importantPhases" class="container">
+        <div class="importantPhases" v-if="phase.isPhaseLimit" v-for="(phase, key) in importantPhasesInfos.phase"
+             :key="key">
+            <h1>{{phase.phaseName}}</h1>
+            <h4>{{calendarPhasesInformations.nameDay[phase.dayWeek]}} {{key}}</h4>
+            <div id="importantPhases" :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile"
+                 :data-sizeTablet="sizeMoonTablet"
+                 v-html="phase.svg"></div>
+            <hr/>
+        </div>
+    </div>
+
+    <div v-if="nextFullMoon" class="container">
+        <div v-html="nextFullMoonInfos.nextFullMoon"></div>
     </div>
 </div>

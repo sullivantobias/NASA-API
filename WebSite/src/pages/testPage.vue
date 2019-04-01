@@ -1,18 +1,7 @@
 <template>
     <div class="container-fluid">
         <h1> TEST HEADER </h1>
-        <Accordion :accordions="accdns">
-            <div slot="first">
-                <Separator slot="component" titleOfSection="Test1"></Separator>
-                <LunarPhase dayPhase></LunarPhase>
-            </div>
-            <div slot="second">
-                <Separator titleOfSection="Test2"></Separator>
-            </div>
-            <div slot="third">
-                <Separator titleOfSection="Test3"></Separator>
-            </div>
-        </Accordion>
+        <LunarPhase></LunarPhase>
         <footer>
             <h1>TEST FOOTER</h1>
         </footer>
