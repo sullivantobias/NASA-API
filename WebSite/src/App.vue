@@ -3,6 +3,7 @@
         <Nav />
         <router-view name="home"/>
         <router-view name="moon"/>
+        <router-view name="search"/>
         <router-view name="test"/>
         <Footer />
     </div>

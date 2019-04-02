@@ -1,0 +1,33 @@
+<div class="vSearchImages">
+    <div class="search input-group col-6 offset-3">
+        <input v-model="query" class="form-control border-secondary py-2" type="search" placeholder="Search images">
+        <div class="input-group-append">
+            <button @click="retrieveImages" class="btn btn-outline-secondary send" type="button">
+                Search
+            </button>
+            <button v-if="sortBy.visible" @click="sortImages" class="btn btn-outline-secondary sortBy" type="button">
+                {{sortBy.title}}
+            </button>
+        </div>
+    </div>
+    <div class="text-center">
+        <PulseLoader :loading="loadingPhase" :color="'#bf1f24'"/>
+    </div>
+    <div v-if="images.length > 0 && dataVisible" class="row">
+        <h3 class="col-12 result text-center">we have found {{results.number}} results</h3>
+        <div class="col-lg-4 col-sm-12 text-center" v-for="image in images">
+            <div class="title">
+                {{image.title}}
+            </div>
+            <a :href="image.img" data-lightbox="all" :data-title="image.caption">
+                <img :src="image.img" class="images img-fluid rounded">
+            </a>
+            <div class="description">
+                {{image.date_created}}
+            </div>
+        </div>
+    </div>
+    <div class="errorMessage col-6 offset-3" v-if="errorMessage.visible">
+        <p>{{errorMessage.message}}</p>
+    </div>
+</div>

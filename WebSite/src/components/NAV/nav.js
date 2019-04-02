@@ -18,6 +18,11 @@ export default {
           title: 'Moon',
           ref: 'moon',
           active: '',
+        },
+        search: {
+          title: 'Search',
+          ref: 'search',
+          active: '',
         }
       },
     }
