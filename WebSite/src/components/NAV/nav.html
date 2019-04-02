@@ -10,8 +10,8 @@
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse container" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto row">
                     <li :class="['nav-item', link.active]" v-for="link in navLinks">
                         <a class="nav-link" :href="link.ref" :data-ref="link.ref">
                             {{ link.title }}
