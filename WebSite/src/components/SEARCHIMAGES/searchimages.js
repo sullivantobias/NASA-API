@@ -31,7 +31,7 @@ export default {
   mounted() {
     LightBox.option({
       'resizeDuration': 200,
-      'positionFromTop': 150,
+      'positionFromTop': 100,
       'wrapAround': true
     });
   },

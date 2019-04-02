@@ -147,11 +147,10 @@ export default {
         if (window.innerWidth < 768) {
           dataSize = item.getAttribute('data-sizeMobile');
         }
-
         setTimeout(() => {
           item.firstElementChild.setAttribute('height', dataSize);
           item.firstElementChild.setAttribute('width', dataSize);
-        })
+        }, 10)
       });
     }
   }

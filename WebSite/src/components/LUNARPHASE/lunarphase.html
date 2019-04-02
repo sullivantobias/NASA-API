@@ -13,7 +13,7 @@
             {{calendarPhasesInformations.year}}
         </h1>
         <ul class="row">
-            <li v-for="day in Number(calendarPhasesInformations.daysMonth)">
+            <li class="col-lg-2 col-md-3 col-sm-6" v-for="day in Number(calendarPhasesInformations.daysMonth)">
                 <h3>{{day}}</h3>
                 <div v-html="calendarPhasesInformations.phase[day].svg" id="calendarSvg">
                 </div>
@@ -27,7 +27,7 @@
         </h1>
         <h4>Distance in KM</h4>
         <ul class="row">
-            <li v-for="day in Number(calendarPhasesInformations.daysMonth)">
+            <li class="col-lg-2 col-md-3 col-sm-6" v-for="day in Number(calendarPhasesInformations.daysMonth)">
                 <h3>{{day}}</h3>
                 <p>
                     {{Math.trunc(calendarPhasesInformations.phase[day].dis)}}
@@ -43,7 +43,6 @@
             <div id="importantPhases" :data-sizeLaptop="sizeMoonLaptop" :data-sizeMobile="sizeMoonMobile"
                  :data-sizeTablet="sizeMoonTablet"
                  v-html="phase.svg"></div>
-            <hr/>
         </div>
     </div>
 

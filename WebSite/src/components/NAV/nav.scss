@@ -57,7 +57,11 @@
 
     @include breakpoint(all-tablet-mobile) {
       #navbarResponsive {
-        margin-left: 30px;
+        text-align: center;
+
+        .nav-item {
+          width: 100%;
+        }
       }
     }
   }
